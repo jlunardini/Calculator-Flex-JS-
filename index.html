@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<style>
+
+.container {
+    background-color: aliceblue;
+    max-width: 400px;
+    margin:auto;
+    border-style:solid;
+    border-width:2px;
+    border-color:lightgray;
+    border-radius:5px;
+}
+
+.display {
+    width:100%;
+    background-color:rgb(228, 228, 228);
+    font-size:48px;
+    height:50px;
+    display:flex;
+    justify-content: flex-end;
+}
+
+.buttons {
+    max-width:400px;
+    display:flex;
+    flex-wrap:wrap;
+
+}
+
+button {
+    flex:1 20%;
+    padding:15px;
+    border-radius:5px;
+}
+
+.btn-operator {
+    background-color:lightpink;
+}
+
+.btn-clear {
+    background-color:lightsalmon;
+}
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="display"></div>
+            <div class="buttons">
+                <button class="btn-number" data-num="1">1</button>
+                <button class="btn-number" data-num="2">2</button>
+                <button class="btn-number" data-num="3">3</button>
+                <button class="btn-operator" data-num="+">+</button>
+                <button class="btn-number" data-num="4">4</button>
+                <button class="btn-number" data-num="5">5</button>
+                <button class="btn-number" data-num="6">6</button>
+                <button class="btn-operator" data-num="-">-</button>
+                <button class="btn-number" data-num="7">7</button>
+                <button class="btn-number" data-num="8">8</button>
+                <button class="btn-number" data-num="9">9</button>
+                <button class="btn-operator" data-num="*">X</button>
+                <button class="btn-clear">C</button>
+                <button class="btn-number" data-num="0">0</button>
+                <button class="btn-equals" data-num="=">=</button>
+                <button class="btn-operator" data-num="/">/</button>
+            </div>
+    </div>
+</body>
+
+<script>
+
+
+const buttons = document.querySelectorAll('.btn-number, .btn-operator')
+const clearButton = document.querySelector('.btn-clear')
+const equalsButton = document.querySelector('.btn-equals')
+const display = document.querySelector('.display')
+
+//add an eventListener to each of the buttons
+buttons.forEach(button => {
+  button.addEventListener('click', () => { 
+    const buttonValue = button.getAttribute('data-num');  
+    display.textContent += buttonValue
+  })
+})
+
+equalsButton.addEventListener('click', () => { 
+  display.textContent = eval(display.textContent)
+})
+
+clearButton.addEventListener('click', () => { 
+  display.textContent = ""
+})
+
+</script>
